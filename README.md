@@ -79,30 +79,6 @@ The Expense Tracker allows users to:
 - PostgreSQL
 
 ---
-
-## 🗃️ Project Structure
-
-```
-
-expense-tracker
-│
-├── src/main/java
-│   ├── controller
-│   ├── service
-│   ├── repository
-│   ├── entity
-│   └── config
-│
-├── src/main/resources
-│   ├── templates
-│   ├── static
-│   └── application.properties
-│
-├── pom.xml
-└── README.md
-
-````
-
 ---
 
 ## ⚙️ Configuration (application.properties)
