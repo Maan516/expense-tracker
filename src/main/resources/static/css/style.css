@@ -1,0 +1,1890 @@
+/* =====================================================
+   BASE
+===================================================== */
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+}
+/* =====================================================
+   NAVBAR (CLEAN, PROFESSIONAL)
+===================================================== */
+.clean-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 14px 0;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* BRAND */
+.clean-navbar .navbar-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #0f172a !important;
+    letter-spacing: 0.2px;
+}
+
+.clean-navbar .navbar-brand i {
+    color: #2563eb;
+}
+
+/* =====================================================
+   NAV LINKS (BLACK + UNDERLINE ON HOVER)
+===================================================== */
+.clean-navbar .nav-link {
+    color: #0f172a !important;      /* always black */
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+/* underline effect */
+.clean-navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1556d6;     /* hero blue */
+    transition: width 0.25s ease;
+}
+
+.clean-navbar .nav-link:hover {
+    color: #0f172a !important;     /* stays black */
+}
+
+.clean-navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+/* =====================================================
+   LOGIN BUTTON (RED BG, WHITE TEXT)
+===================================================== */
+.clean-navbar .btn-outline-primary {
+    padding: 9px 22px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+
+    background-color: #dc2626;     /* red */
+    border: 1px solid #dc2626;
+    color: #ffffff;
+
+    transition: background-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.clean-navbar .btn-outline-primary:hover {
+    background-color: #b91c1c;     /* darker red */
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35);
+    color: #ffffff;
+}
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+.hero {
+    position: relative;
+    height: 520px;
+    padding-top: 120px;
+    background: linear-gradient(135deg, #0f3cc9 0%, #1556d6 100%);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Decorative line-art */
+.hero-pattern {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 260px;
+    z-index: 1;
+    opacity: 0.85;
+}
+
+/* Content above pattern */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    max-width: 760px;
+    margin-bottom: 18px;
+    letter-spacing: -0.4px;
+}
+
+.hero-title span {
+    color: #ffb703;
+}
+
+.hero-lead {
+    font-size: 1.15rem;
+    color: #e0e7ff;
+    max-width: 700px;
+    margin-bottom: 14px;
+}
+
+.hero-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 650px;
+}
+
+/* =====================================================
+   HERO BUTTONS (BALANCED)
+===================================================== */
+.hero-actions {
+    margin-top: 32px;
+}
+
+.hero .btn {
+    padding: 12px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* Primary CTA */
+.hero .btn-primary {
+    background-color: #ff4d4f;
+    border: none;
+}
+
+.hero .btn-primary:hover {
+    background-color: #e63e40;
+}
+
+/* Secondary CTA */
+.hero .btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+}
+
+.hero .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =====================================================
+   ABOUT SECTION
+===================================================== */
+.about-section {
+    padding: 90px 0;
+    background-color: #ffffff;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #64748b;
+}
+
+.about-text {
+    font-size: 1.05rem;
+    color: #334155;
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+/* About feature box */
+.about-box {
+    background-color: #f8fafc;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+}
+
+.about-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.about-item i {
+    font-size: 1.4rem;
+    color: #2563eb;
+    margin-right: 12px;
+}
+/* =====================================================
+   SERVICES SECTION (LAYERED & CLEAN)
+===================================================== */
+.services-section {
+    padding: 60px 0;
+    background-color: #eef2f6; /* slightly darker than card bg */
+}
+
+/* Section text */
+.services-section .section-title {
+    color: #0f172a;
+}
+
+.services-section .section-subtitle {
+    color: #475569;
+}
+
+/* =====================================================
+   SERVICE CARD
+===================================================== */
+.service-card {
+    background-color: #ffffff;       /* pure white card */
+    border: 1px solid #e5e7eb;
+    border-bottom: 4px solid transparent;
+    border-radius: 18px;
+    padding: 34px 30px;
+    height: 100%;
+    text-align: left;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-bottom-color 0.25s ease;
+}
+
+/* Hover effect */
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+    border-bottom-color: #1556d6; /* hero accent */
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+.service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background-color: #f1f5f9; /* subtle icon bg */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.service-icon i {
+    font-size: 1.6rem;
+    color: #1556d6;
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+.service-card h5 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =====================================================
+   VALUE / HIGHLIGHT SECTION
+===================================================== */
+.value-section {
+    padding: 70px 0;
+    background-color: black; /* dark neutral */
+    color: #ffffff;
+
+    margin: 30px 0;
+}
+
+/* Title */
+.value-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.value-title span {
+    color: #1556d6; /* hero blue */
+}
+
+/* Description blocks */
+.value-text {
+    font-size: 0.95rem;
+    color: #e5e7eb;
+    line-height: 1.6;
+    padding-left: 16px;
+    border-left: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .value-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .value-text {
+        padding-left: 12px;
+    }
+}
+/* =====================================================
+   TIMELINE SECTION
+===================================================== */
+.timeline-section {
+    padding: 90px 0;
+    background-color: #ffffff;
+}
+
+/* Timeline container */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Vertical line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #9ca3af;
+    transform: translateX(-50%);
+}
+
+/* Timeline item */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+/* Show animation */
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Left & Right */
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+/* Dot */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    background-color: #1556d6;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item.left::before {
+    right: -7px;
+}
+
+.timeline-item.right::before {
+    left: -7px;
+}
+
+/* Card */
+.timeline-content {
+    background-color: #f8fafc;
+    padding: 22px 26px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    border-bottom: 3px solid #1556d6;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+/* Text */
+.timeline-content h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin: 0;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 20px;
+        text-align: left;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-item::before {
+        left: 4px;
+    }
+}
+/* =====================================================
+   TECHNOLOGY STACK
+===================================================== */
+.tech-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.tech-card {
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 30px;
+    height: 100%;
+}
+
+.tech-card h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1556d6;
+    margin-bottom: 10px;
+}
+
+.tech-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin: 0;
+}
+/* =====================================================
+   USER ROLES
+===================================================== */
+.roles-section {
+    padding: 80px 0;
+    background-color: #eef2f6;
+}
+.role-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 36px 30px;
+    border-bottom: 4px solid #1556d6;
+    height: 100%;
+
+}
+
+
+
+.role-card h5 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+.role-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.6;
+}
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+    padding: 50px 0;
+    background-color: black;
+    color: #cbd5f5;
+}
+
+.footer-brand {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    color: #c7d2fe;
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+/* =====================================================
+   AUTH (LOGIN / REGISTER) – CLEAN WHITE UI
+===================================================== */
+
+.login-body {
+    background-color: #ffffff;
+}
+
+/* Section */
+.login-section {
+    padding: 0;
+}
+
+/* Card */
+.login-card {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 44px 40px;
+
+}
+
+/* Header */
+.login-header h3 {
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #0f172a;
+}
+
+.login-header p {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.login-icon {
+    font-size: 2.2rem;
+    color: #1556d6;
+    margin-bottom: 12px;
+}
+
+/* Inputs */
+.login-card .form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.login-card .form-control {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.login-card .form-control:focus {
+    border-color: #1556d6;
+    box-shadow: 0 0 0 0.15rem rgba(21, 86, 214, 0.2);
+}
+
+/* Button */
+.login-card .btn-primary {
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: #1556d6;
+    border: none;
+}
+
+.login-card .btn-primary:hover {
+    background-color: #0f3cc9;
+}
+
+/* Links */
+.login-card a {
+    color: #1556d6;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.login-card a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================
+   PASSWORD EYE ICON ONLY
+   ===================================== */
+
+/* Target ONLY the eye button */
+button:has(i.bi-eye),
+button:has(i.bi-eye-slash) {
+    background: transparent;
+    border: none;
+    padding: 0 12px;
+}
+
+/* Eye icon default */
+button i.bi-eye,
+button i.bi-eye-slash {
+    color: #6c757d;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+/* Hover effect */
+button:hover i.bi-eye,
+button:hover i.bi-eye-slash {
+    color: #0d6efd; /* bootstrap primary */
+}
+
+/* Remove focus outline ONLY for eye button */
+button:has(i.bi-eye):focus,
+button:has(i.bi-eye-slash):focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* =====================================================
+   RIGHT SIDE INFO PANEL
+===================================================== */
+.auth-info {
+    background: linear-gradient(135deg, #0f3cc9, #1556d6);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.auth-info-content {
+    max-width: 420px;
+}
+
+.auth-info-content h2 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.auth-info-content p {
+    font-size: 1.05rem;
+    color: #e0e7ff;
+    margin-bottom: 26px;
+    line-height: 1.6;
+}
+
+.auth-info-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.auth-info-content li {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.auth-info-content i {
+    color: #ffb703;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 991px) {
+    .auth-info {
+        display: none;
+    }
+}
+/* =====================================================
+   REGISTER PAGE – LAYOUT FLIP (SECTION BASED)
+===================================================== */
+
+@media (min-width: 992px) {
+
+    .register-section .row {
+        flex-direction: row-reverse;
+    }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding: 110px 0 80px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* ===============================
+   ULTRA PREMIUM TOAST (SUCCESS)
+================================ */
+
+.toast-success {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    min-width: 300px;
+    max-width: 360px;
+    padding: 16px 20px;
+
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.14),
+        0 6px 14px rgba(0, 0, 0, 0.08),
+        inset 5px 0 0 #22c55e;
+
+    animation:
+        toastEnter 0.45s cubic-bezier(.21,.8,.35,1) forwards,
+        toastAutoHide 0.4s ease forwards 3.2s;
+}
+
+/* ===============================
+   ICON
+================================ */
+.toast-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    box-shadow: 0 6px 14px rgba(34, 197, 94, 0.45);
+}
+
+/* ===============================
+   CONTENT
+================================ */
+.toast-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.toast-content strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.toast-content span {
+    font-size: 0.85rem;
+    color: #475569;
+}
+/* ===============================
+   ULTRA PREMIUM TOAST (ERROR)
+================================ */
+
+.toast-error {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    min-width: 300px;
+    max-width: 360px;
+    padding: 16px 20px;
+
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.14),
+        0 6px 14px rgba(0, 0, 0, 0.08),
+        inset 5px 0 0 #ef4444;   /* 🔴 red accent */
+
+    animation:
+        toastEnter 0.45s cubic-bezier(.21,.8,.35,1) forwards,
+        toastAutoHide 0.4s ease forwards 3.2s;
+}
+
+/* ===============================
+   ERROR ICON COLOR
+================================ */
+
+.toast-error .toast-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 6px 14px rgba(239, 68, 68, 0.45);
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+@keyframes toastEnter {
+    from {
+        opacity: 0;
+        transform: translateX(120%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes toastAutoHide {
+    to {
+        opacity: 0;
+        transform: translateX(120%) scale(0.95);
+    }
+}
+/* =====================================================
+   DASHBOARD BASE
+===================================================== */
+.dashboard-body {
+    background-color: #f1f5f9;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #0f3cc9, #1556d6);
+    color: #ffffff;
+    padding: 24px 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Brand */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 36px;
+}
+
+.sidebar-brand i {
+    font-size: 1.5rem;
+    color: #ffb703;
+}
+
+/* =====================================================
+   SIDEBAR MENU (THIS WAS MISSING ❗)
+===================================================== */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 8px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: #e0e7ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+}
+
+.sidebar-menu a i {
+    font-size: 1.1rem;
+}
+
+.sidebar-menu li.active a,
+.sidebar-menu a:hover {
+    background-color: rgba(255,255,255,0.18);
+    color: #ffffff;
+}
+
+/* Logout spacing */
+.sidebar-menu .logout {
+    margin-top: 30px;
+}
+
+/* =====================================================
+   MOBILE SIDEBAR BEHAVIOR
+===================================================== */
+@media (max-width: 991px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 2000;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+}
+
+/* ================================
+   SIDEBAR SUBMENU – CLEAN
+================================ */
+
+.has-submenu .submenu {
+    display: none;
+
+    list-style: none;
+    margin: 6px 0 0 0;
+    padding-left: 18px;
+
+}
+
+.has-submenu.open .submenu {
+    display: block;
+}
+
+.submenu li {
+    margin-bottom: 4px;
+}
+
+.submenu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 14px;
+    border-radius: 8px;
+
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    color: #e0e7ff;
+    text-decoration: none;
+
+    transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.submenu li a:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    padding-left: 18px;
+    color: #ffffff;
+}
+
+.submenu li a i {
+    font-size: 0.95rem;
+    color: #ffb703;
+}
+
+/* ================================
+   EXPENSES ARROW SPACING FIX
+================================ */
+
+/* Parent menu link */
+.has-submenu > a {
+    padding-right: 35px;   /* creates space before arrow */
+}
+
+/* Arrow icon */
+.has-submenu .arrow {
+    margin-left: auto;     /* pushes arrow to right */
+    margin-right: 8px;     /* ← THIS moves arrow away from text */
+    font-size: 0.85rem;
+    opacity: 0.85;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow on open */
+.has-submenu.open .arrow {
+    transform: rotate(180deg);
+}
+/* =====================================================
+   DASHBOARD – MAIN CONTENT ONLY (SIMPLE & PROFESSIONAL)
+===================================================== */
+
+.dashboard-body {
+    background-color: #f1f5f9;
+}
+
+/* ================= MAIN CONTENT ================= */
+.main-content {
+    flex: 1;
+    padding: 28px 32px;
+}
+
+/* ================= TOP BAR ================= */
+.topbar {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    padding: 14px 20px;
+    margin-bottom: 28px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.user-info i {
+    font-size: 1.3rem;
+    color: #334155;
+}
+
+/* ================= STATS CARDS ================= */
+.dashboard-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    padding: 22px;
+}
+
+.dashboard-card h6 {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.dashboard-card h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 6px 0;
+}
+
+.dashboard-card .card-desc {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* ================= QUICK ACTIONS ================= */
+.action-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    padding: 22px;
+
+    height: 100%;
+}
+
+.action-card h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.action-card p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 14px;
+}
+
+/* Buttons – simple, not fancy */
+.action-card .btn {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 6px;
+}
+
+/* Primary button */
+.btn-primary {
+    background-color: #2563eb;
+    border: 1px solid #2563eb;
+}
+
+.btn-primary:hover {
+    background-color: #1e40af;
+    border-color: #1e40af;
+}
+
+/* Outline button */
+.btn-outline-primary {
+    color: #2563eb;
+    border: 1px solid #2563eb;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* ================= RECENT ACTIVITY ================= */
+.dashboard-placeholder {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    padding: 22px;
+}
+
+.dashboard-placeholder h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.dashboard-placeholder p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+/* =====================================================
+   ADD EXPENSE FORM – CLEAN & PROFESSIONAL
+===================================================== */
+
+.expense-form-card.full-width {
+    background: #ffffff;
+    border-radius: 14px;
+
+    padding: 32px 36px;
+    width: 100%;
+
+    border: 1px solid #e5e7eb;
+}
+
+/* Title */
+.expense-form-body h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 26px;
+    color: #0f172a;
+}
+
+/* Labels */
+.expense-form-body .form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 6px;
+}
+
+/* Inputs */
+.expense-form-body .form-control {
+    padding: 13px 14px;
+    font-size: 0.9rem;
+
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+/* Focus (simple, not flashy) */
+.expense-form-body .form-control:focus {
+    border-color: #2563eb;
+    box-shadow: none;
+}
+
+/* Textarea */
+.expense-form-body textarea {
+    resize: none;
+}
+
+/* Error messages */
+.expense-form-body small.text-danger {
+    font-size: 0.75rem;
+}
+
+/* =====================================================
+   FORM ACTIONS
+===================================================== */
+
+.expense-form-body .btn-primary {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    border-radius: 8px;
+    background-color: #2563eb;
+    border: none;
+}
+
+.expense-form-body .btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+/* CANCEL BUTTON – RED (CLEAN) */
+.expense-form-body .btn-outline-danger {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    border-radius: 8px;
+    border: 1px solid #dc2626;
+    color: #dc2626;
+    background: transparent;
+}
+
+.expense-form-body .btn-outline-danger:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+/* =====================================================
+   EXPENSE LIST – EVEN SPACING + BLACK TEXT
+===================================================== */
+
+.expense-list-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px 26px;
+}
+
+/* Table layout fix */
+.expense-table {
+    width: 100%;
+    table-layout: fixed; /* 🔥 THIS FIXES UNEVEN GAPS */
+    border-collapse: collapse;
+}
+
+/* Header */
+.expense-table thead th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #000000;
+    background-color: #f8fafc;
+    padding: 14px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+/* Body cells */
+.expense-table tbody td {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #000000;
+    padding: 14px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+/* Hover */
+.expense-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Column widths (EVEN & PROFESSIONAL) */
+.expense-table th:nth-child(1),
+.expense-table td:nth-child(1) { width: 6%; }
+
+.expense-table th:nth-child(2),
+.expense-table td:nth-child(2) { width: 16%; }
+
+.expense-table th:nth-child(3),
+.expense-table td:nth-child(3) { width: 14%; }
+
+.expense-table th:nth-child(4),
+.expense-table td:nth-child(4) { width: 24%; }
+
+.expense-table th:nth-child(5),
+.expense-table td:nth-child(5) { width: 14%; }
+
+.expense-table th:nth-child(6),
+.expense-table td:nth-child(6) { width: 12%; }
+
+.expense-table th:nth-child(7),
+.expense-table td:nth-child(7) { width: 14%; }
+
+/* Description */
+.expense-table td.description {
+    color: #000000;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Amount */
+.expense-table td.amount {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Actions */
+.expense-table td.actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Buttons */
+.expense-table .btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+}
+
+/* Edit */
+.expense-table .btn-outline-primary {
+    color: #2563eb;
+    border-color: #2563eb;
+}
+
+.expense-table .btn-outline-primary:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Delete */
+.expense-table .btn-outline-danger {
+    color: #dc2626;
+    border-color: #dc2626;
+}
+
+.expense-table .btn-outline-danger:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+/* =====================================================
+   EDIT EXPENSE MODAL – CLEAN & MATCHING
+===================================================== */
+
+.modal-backdrop {
+    background-color: rgba(15, 23, 42, 0.55);
+}
+
+.modal-dialog {
+    max-width: 720px;
+}
+
+.modal-content {
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+}
+
+.modal-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.modal-body {
+    padding: 22px 26px;
+}
+
+.modal-body .form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.modal-body .form-control {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    color: #000000;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.modal-footer {
+    padding: 14px 22px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.modal-footer .btn-primary {
+    background-color: #2563eb;
+    border: none;
+}
+
+.modal-footer .btn-danger {
+    border-radius: 8px;
+}
+/* =====================================================
+   CATEGORY PAGE – PROFESSIONAL & CLEAN
+===================================================== */
+
+/* PAGE WRAPPER */
+.category-page {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* =====================================================
+   ADD CATEGORY CARD
+===================================================== */
+.category-form-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px 24px;
+}
+
+.category-form-body h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+/* FORM LAYOUT */
+.category-form-body form {
+    gap: 14px;
+    align-items: flex-end;
+}
+
+/* INPUT COLUMN – LIMIT WIDTH */
+.category-form-body form .col-md-6:first-child {
+    flex: 0 0 auto;
+    max-width: 420px;   /* 🔥 controls input size */
+    width: 100%;
+}
+
+/* BUTTON COLUMN – AUTO SIZE */
+.category-form-body form .col-md-6:last-child {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+/* INPUT */
+.category-form-body .form-control {
+    height: 42px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.category-form-body .form-control:focus {
+    border-color: #2563eb;
+    box-shadow: none;
+}
+
+/* BUTTON */
+.category-form-body .btn {
+    height: 42px;
+    padding: 0 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 10px;
+    white-space: nowrap; /* prevents full width */
+}
+
+/* =====================================================
+   CATEGORY LIST CARD
+===================================================== */
+.category-list-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 22px 24px;
+}
+
+.category-list-card h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 18px;
+}
+
+/* =====================================================
+   CHIP GRID
+===================================================== */
+.category-chip-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+}
+
+/* =====================================================
+   CHIP
+===================================================== */
+.category-chip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+
+    transition: all 0.2s ease;
+}
+
+.category-chip:hover {
+    background-color: #f1f5f9;
+    border-color: #dbeafe;
+}
+
+/* LABEL */
+.category-chip-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =====================================================
+   CHIP ACTIONS
+===================================================== */
+.category-chip-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.category-chip-actions .btn {
+    padding: 4px 7px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+}
+
+/* EDIT */
+.category-chip-actions .btn-outline-primary {
+    color: #2563eb;
+    border-color: #2563eb;
+}
+
+.category-chip-actions .btn-outline-primary:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* DELETE */
+.category-chip-actions .btn-outline-danger {
+    color: #dc2626;
+    border-color: #dc2626;
+}
+
+.category-chip-actions .btn-outline-danger:hover {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+.category-page .text-muted {
+    font-size: 0.85rem;
+    color: #64748b !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+
+    .category-form-body form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .category-form-body form .col-md-6:first-child {
+        max-width: 100%;
+    }
+
+    .category-chip-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+/* =====================================================
+   REPORT PAGE – ISOLATED & DASHBOARD CONSISTENT
+===================================================== */
+
+/* ================= FILTER CARD ================= */
+.report-filter-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 26px 30px;
+}
+
+.report-filter-card .form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+}
+
+.report-filter-card .form-control {
+    height: 42px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.report-filter-card .form-control:focus {
+    border-color: #2563eb;
+    box-shadow: none;
+}
+
+.report-filter-card .btn {
+    height: 42px;
+    padding: 0 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* ================= REPORT CARD ================= */
+.report-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 24px 26px;
+}
+
+.report-card h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 18px;
+}
+/* ===============================
+   REPORT ACTION BUTTON FIX
+================================ */
+
+.report-action-btn {
+    display: inline-flex;
+    align-items: center;      /* vertical center */
+    justify-content: center;  /* horizontal center */
+    gap: 6px;
+
+    height: 42px;             /* SAME height for all */
+    padding: 0 16px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1;           /* 🔥 fixes text jump */
+}
+
+/* ================= REPORT TABLE ================= */
+.report-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Header */
+.report-table thead th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #334155;
+    background-color: #f8fafc;
+    padding: 14px 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Body */
+.report-table tbody td {
+    font-size: 0.88rem;
+    color: #0f172a;
+    padding: 14px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+/* Hover */
+.report-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Amount */
+.report-table td.text-end {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Empty state */
+.report-table .text-muted {
+    font-size: 0.85rem;
+    color: #64748b !important;
+}
+
+/* ================= TOTAL ROW ================= */
+.report-table tfoot th {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 16px 12px;
+    background-color: #f8fafc;
+    border-top: 2px solid #e5e7eb;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .report-filter-card,
+    .report-card {
+        padding: 20px;
+    }
+}
+/* =====================================================
+   PROFILE PAGE – CLEAN & PREMIUM (ISOLATED)
+===================================================== */
+
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* Profile cards */
+.profile-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px 30px;
+}
+
+/* Titles */
+.profile-card h5 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.profile-card .form-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+/* Read-only inputs (name/email) */
+.profile-card input[disabled] {
+    background-color: #f1f5f9;
+    border: 1px solid #e5e7eb;
+    color: #0f172a;
+    font-weight: 500;
+    cursor: not-allowed;
+}
+
+/* Password inputs */
+.profile-card .form-control {
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.profile-card .form-control:focus {
+    border-color: #2563eb;
+    box-shadow: none;
+}
+
+/* Password button */
+.profile-card .btn-primary {
+    margin-top: 8px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: #2563eb;
+    border: none;
+}
+
+.profile-card .btn-primary:hover {
+    background-color: #1e40af;
+}
+
+/* Profile layout spacing */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
