@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<aside class="sidebar admin-sidebar" id="sidebar" th:fragment="adminSidebar">
+
+  <div class="sidebar-brand">
+    <i class="bi bi-shield-lock"></i>
+    <span>Admin Panel</span>
+  </div>
+
+  <ul class="sidebar-menu">
+
+    <li>
+      <a th:href="@{/admin/dashboard}">
+        <i class="bi bi-speedometer2"></i> Dashboard
+      </a>
+    </li>
+
+    <li>
+      <a th:href="@{/admin/users}">
+        <i class="bi bi-people"></i> Users
+      </a>
+    </li>
+
+    <li>
+      <a th:href="@{/admin/profile}">
+        <i class="bi bi-person-lock"></i> Profile
+      </a>
+    </li>
+
+    <li class="logout">
+      <a th:href="@{/logout}">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a>
+    </li>
+
+  </ul>
+</aside>
+
+</body>
+</html>
