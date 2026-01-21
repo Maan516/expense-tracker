@@ -2,6 +2,7 @@ package org.example.expensetracker.controller;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.example.expensetracker.entity.Role;
 import org.example.expensetracker.entity.User;
 import org.example.expensetracker.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -78,10 +79,14 @@ public class UserController {
             return "redirect:/users/login";
         }
 
-        // Save logged-in user in session (correct usage)
+        // save user in session
         session.setAttribute("loggedInUser", loggedInUser);
 
-        // Flash message for dashboard toast
+        // 🔥 ROLE-BASED DASHBOARD REDIRECT
+        if (loggedInUser.getRole() == Role.ADMIN) {
+            return "redirect:/admin/dashboard";
+        }
+
         redirectAttributes.addFlashAttribute(
                 "successMessage",
                 "Login successful! Welcome back."

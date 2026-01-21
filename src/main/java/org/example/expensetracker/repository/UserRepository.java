@@ -1,9 +1,11 @@
 package org.example.expensetracker.repository;
 
+import org.example.expensetracker.entity.Role;
 import org.example.expensetracker.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,4 +16,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     // For OTP verification (step 2)
     Optional<User> findByEmailAndResetOtp(String email, String resetOtp);
+
+    List<User> findByRole(Role role);
+
+
 }
