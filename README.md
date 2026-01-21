@@ -1,12 +1,4 @@
-Got it 👍
-Here is a **clean, well-structured, DIRECT copy-paste README** — no extra talk, no confusion.
-This is **resume + GitHub + recruiter friendly**.
 
----
-
-## ✅ COPY THIS EXACT README.md
-
-```md
 # Expense Tracker – Spring Boot Application
 
 A full-stack **Expense Tracker Web Application** built using **Spring Boot**, **Thymeleaf**, and **PostgreSQL**.  
