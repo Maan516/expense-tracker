@@ -1,87 +1,137 @@
 
+
 # Expense Tracker – Spring Boot Application
 
-A full-stack **Expense Tracker Web Application** built using **Spring Boot**, **Thymeleaf**, and **PostgreSQL**.  
-This project focuses on real-world backend concepts such as authentication, CRUD operations, reporting, and OTP-based password reset.
+A full-stack **Expense Tracker Web Application** built using **Spring Boot**, **Thymeleaf**, and **PostgreSQL**.
+
+This project is designed to demonstrate **real-world backend development** concepts such as authentication, role-based access, CRUD operations, reporting, and secure password reset using Email OTP.
 
 ---
 
 ## 📌 Project Overview
 
-The Expense Tracker allows users to:
-- Register and login securely
-- Track daily expenses
-- Categorize expenses
-- Generate expense reports
-- Reset password using Email OTP
+The Expense Tracker helps users manage their daily expenses in a structured way.
 
-> ⚠️ Current version supports **USER role only**  
-> (No Admin module implemented yet)
+It supports:
+
+* Secure user authentication
+* Expense and category management
+* Expense reports with filters
+* Password reset using OTP
+* Admin dashboard to monitor users
 
 ---
 
 ## ✨ Features
 
 ### 🔐 Authentication
-- User registration
-- User login
-- Password encryption
-- Forgot password using **OTP via Email**
 
-### 💰 Expense Management
-- Add expense
-- Edit expense
-- Delete expense
-- View expense list
+* User registration
+* User login
+* Encrypted passwords (Spring Security)
+* Forgot password using **Email OTP**
+* Change password from profile
 
-### 🗂️ Categories
-- Create categories
-- Assign category to expenses
+---
 
-### 📊 Reports
-- Filter expenses by date range
-- View total expense
-- Export report as **PDF**
+### 👤 User Features
 
-### 📱 UI
-- Responsive design
-- Mobile-friendly sidebar toggle
-- Clean Bootstrap UI
+#### Dashboard
+
+* Total expenses (all time)
+* This month’s expenses
+* Total categories created
+
+#### Categories
+
+* Add categories
+* Categories are user-specific
+
+#### Expenses
+
+* Add expense
+* View expense list
+* Filter expenses by:
+
+  * Date range
+  * Category
+* Delete expenses
+
+#### Reports
+
+* View total spending for selected date range
+* Analyze spending between dates
+
+#### Profile
+
+* View account details
+* Change password securely
+* Logout
+
+---
+
+### 🛡️ Admin Features
+
+#### Admin Login
+
+* Admin logs in using admin credentials
+* Access restricted to ADMIN role only
+
+#### Admin Dashboard
+
+* View total registered users
+* Quick access to user list
+
+#### User Management (Read-Only)
+
+* View list of registered users
+* View user name, email, and role
+* No delete or block actions (intentionally kept simple)
+
+#### Admin Profile
+
+* View admin account details
+* Change admin password securely
+* Logout
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Backend
-- Java
-- Spring Boot
-- Spring MVC
-- Spring Data JPA
-- Spring Security (password encryption)
-- Java Mail Sender (OTP email)
+
+* Java
+* Spring Boot
+* Spring MVC
+* Spring Data JPA
+* Spring Security (password encryption)
+* Java Mail Sender (OTP email)
 
 ### Frontend
-- Thymeleaf
-- HTML
-- CSS
-- Bootstrap
-- JavaScript
+
+* Thymeleaf
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
 
 ### Database
-- PostgreSQL
+
+* PostgreSQL
 
 ---
----
 
-## ⚙️ Configuration (application.properties)
+## ⚙️ Configuration
 
-> ❗ Sensitive values are NOT included  
-> Add your own values before running
+### `application.properties`
+
+Sensitive values are **not committed**.
+Create your own `application.properties` file using the example below.
 
 ```properties
 spring.application.name=expense-tracker
 
-# Database (PostgreSQL)
+# PostgreSQL Database
 spring.datasource.url=
 spring.datasource.username=
 spring.datasource.password=
@@ -92,28 +142,26 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.open-in-view=false
 
-# Email Configuration (Gmail SMTP for OTP)
+# Email Configuration (OTP)
 spring.mail.host=
 spring.mail.port=
 spring.mail.username=
 spring.mail.password=
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
-````
+```
 
 ---
 
 ## 🔐 Email OTP Setup (Forgot Password)
 
-* Uses **Gmail SMTP**
-* Requires **2-Step Verification**
-* Uses **Gmail App Password**
+This project uses **Gmail SMTP** for sending OTP emails.
 
 Steps:
 
-1. Enable 2-Step Verification in Google Account
-2. Generate App Password
-3. Use App Password in `spring.mail.password`
+1. Enable **2-Step Verification** in your Google account
+2. Generate a **Gmail App Password**
+3. Use the App Password in `spring.mail.password`
 
 ---
 
@@ -124,7 +172,7 @@ Steps:
 * Java 17+
 * PostgreSQL
 * Maven
-* IntelliJ IDEA
+* IntelliJ IDEA (recommended)
 
 ### Steps
 
@@ -142,13 +190,43 @@ http://localhost:8080
 
 ---
 
+## 🧭 How to Use the Application
+
+### 👤 User Flow
+
+1. Register a new account
+2. Login with email and password
+3. If password is forgotten → use **Forgot Password (OTP)**
+4. After login:
+
+   * View dashboard (total expenses, monthly expenses, categories)
+   * Add categories
+   * Add expenses
+   * View and filter expense list
+   * Generate expense report for date range
+5. Go to Profile → change password
+6. Logout
+
+---
+
+### 🛡️ Admin Flow
+
+1. Login using admin credentials
+2. Access Admin Dashboard
+3. View total registered users
+4. View user list (read-only)
+5. Go to Admin Profile → change password
+6. Logout
+
+---
+
 ## 🚀 Future Improvements
 
-* Admin dashboard
-* Role-based access control
-* Charts & analytics
+* Expense charts and analytics
+* Admin actions (block / delete users)
 * Cloud deployment
 * Docker support
+* React frontend version
 
 ---
 
@@ -161,5 +239,5 @@ Spring Boot Backend Developer (Fresher)
 
 ## 📄 License
 
-This project is created for learning and portfolio purposes.
+This project is created for **learning and portfolio purposes**.
 
