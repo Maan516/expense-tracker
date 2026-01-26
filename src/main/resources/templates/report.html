@@ -14,22 +14,6 @@
 <body class="dashboard-body">
 
 <div class="dashboard-wrapper">
-    <div class="topbar">
-        <div class="d-flex align-items-center gap-3">
-            <!-- ☰ MOBILE SIDEBAR TOGGLE -->
-            <button class="btn btn-light d-lg-none" id="sidebarToggle">
-                <i class="bi bi-list"></i>
-            </button>
-
-            <h4 class="mb-0">Expense Report</h4>
-        </div>
-
-        <div class="user-info">
-            <i class="bi bi-person-circle"></i>
-            <span th:text="${session.loggedInUser.name}">User</span>
-        </div>
-    </div>
-
     <!-- SIDEBAR -->
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
@@ -41,7 +25,7 @@
             <h4>Expense Report</h4>
             <div class="user-info">
                 <i class="bi bi-person-circle"></i>
-                <span th:text="${session.loggedInUser.name}">User</span>
+                <span th:text="${user.name}">User</span>
             </div>
         </div>
 

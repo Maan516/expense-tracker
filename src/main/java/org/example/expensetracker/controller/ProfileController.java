@@ -1,8 +1,12 @@
 package org.example.expensetracker.controller;
 
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.example.expensetracker.entity.User;
+import org.example.expensetracker.repository.UserRepository;
 import org.example.expensetracker.service.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,16 +18,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ProfileController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public ProfileController(UserService userService) {
+    public ProfileController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     // ================= SHOW PROFILE =================
     @GetMapping("/profile")
-    public String showProfile(HttpSession session, Model model) {
+    public String showProfile(Authentication authentication, Model model) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return "redirect:/users/login";
         }
@@ -31,16 +39,21 @@ public class ProfileController {
         model.addAttribute("user", user);
         return "profile";
     }
+
     @PostMapping("/profile/password")
     public String changePassword(
-            HttpSession session,
+            Authentication authentication,
+            HttpServletRequest request,
+            HttpServletResponse response,
             RedirectAttributes redirectAttributes,
             @RequestParam String currentPassword,
             @RequestParam String newPassword,
             @RequestParam String confirmPassword
     ) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return "redirect:/users/login";
         }
@@ -52,7 +65,7 @@ public class ProfileController {
                 confirmPassword
         );
 
-        // ❌ ERROR → TOAST
+        // ERROR → TOAST
         if (!"SUCCESS".equals(result)) {
             redirectAttributes.addFlashAttribute(
                     "errorMessage",
@@ -61,16 +74,15 @@ public class ProfileController {
             return "redirect:/profile";
         }
 
-        // ✅ SUCCESS → TOAST
+        // SUCCESS → TOAST
         redirectAttributes.addFlashAttribute(
                 "successMessage",
                 "Password updated successfully. Please login again."
         );
 
-        // Logout after password change
-        session.invalidate();
+        // Logout after password change (Spring Security way)
+        new SecurityContextLogoutHandler().logout(request, response, authentication);
 
         return "redirect:/users/login";
     }
 }
-

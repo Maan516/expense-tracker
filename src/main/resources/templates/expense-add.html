@@ -37,7 +37,9 @@
 
             <div class="user-info">
                 <i class="bi bi-person-circle"></i>
-                <span th:text="${session.loggedInUser.name}">User</span>
+
+                <!-- ✅ CHANGED HERE -->
+                <span th:text="${user.name}">User</span>
             </div>
         </div>
 
@@ -101,7 +103,6 @@
                                     th:value="${cat.id}"
                                     th:text="${cat.name}">
                             </option>
-
 
                         </select>
 

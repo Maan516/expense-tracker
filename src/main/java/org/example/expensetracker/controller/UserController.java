@@ -54,46 +54,23 @@ public class UserController {
         return "register";
     }
 
-
-    // SHOW LOGIN PAGE
     @GetMapping("/login")
-    public String showLoginPage(Model model) {
+    public String showLoginPage(
+            @RequestParam(value="error", required=false) String error,
+            @RequestParam(value="logout", required=false) String logout,
+            Model model
+    ){
         model.addAttribute("user", new User());
+
+        if(error != null){
+            model.addAttribute("errorMessage", "Invalid email or password");
+        }
+        if(logout != null){
+            model.addAttribute("successMessage", "Logged out successfully");
+        }
         return "login";
     }
-    @PostMapping("/login")
-    public String loginUser(
-            @ModelAttribute("user") User user,
-            HttpSession session,
-            RedirectAttributes redirectAttributes
-    ) {
 
-        User loggedInUser =
-                userService.loginUser(user.getEmail(), user.getPassword());
-
-        if (loggedInUser == null) {
-            redirectAttributes.addFlashAttribute(
-                    "errorMessage",
-                    "Invalid email or password"
-            );
-            return "redirect:/users/login";
-        }
-
-        // save user in session
-        session.setAttribute("loggedInUser", loggedInUser);
-
-        // 🔥 ROLE-BASED DASHBOARD REDIRECT
-        if (loggedInUser.getRole() == Role.ADMIN) {
-            return "redirect:/admin/dashboard";
-        }
-
-        redirectAttributes.addFlashAttribute(
-                "successMessage",
-                "Login successful! Welcome back."
-        );
-
-        return "redirect:/dashboard";
-    }
     // ===============================
     // FORGOT PASSWORD - STEP 1
     // ===============================

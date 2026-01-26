@@ -1,10 +1,11 @@
 package org.example.expensetracker.controller;
 
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.example.expensetracker.entity.Category;
 import org.example.expensetracker.entity.User;
+import org.example.expensetracker.repository.UserRepository;
 import org.example.expensetracker.service.CategoryService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,23 +17,31 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final UserRepository userRepository;
 
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, UserRepository userRepository) {
         this.categoryService = categoryService;
+        this.userRepository = userRepository;
     }
 
     // ===============================
     // SHOW CATEGORY PAGE
     // ===============================
     @GetMapping
-    public String showCategoryPage(HttpSession session, Model model) {
+    public String showCategoryPage(Authentication authentication, Model model) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return "redirect:/users/login";
         }
 
         model.addAttribute("category", new Category());
+
+        // ✅ REQUIRED (topbar / templates use ${user.name})
+        model.addAttribute("user", user);
+
         model.addAttribute(
                 "categories",
                 categoryService.getCategoriesByUser(user)
@@ -48,11 +57,13 @@ public class CategoryController {
     public String addCategory(
             @Valid @ModelAttribute("category") Category category,
             BindingResult result,
-            HttpSession session,
+            Authentication authentication,
             RedirectAttributes redirectAttributes
     ) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return "redirect:/users/login";
         }
@@ -94,11 +105,13 @@ public class CategoryController {
     public String updateCategory(
             @Valid @ModelAttribute Category category,
             BindingResult result,
-            HttpSession session,
+            Authentication authentication,
             RedirectAttributes redirectAttributes
     ) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return "redirect:/users/login";
         }

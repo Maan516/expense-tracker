@@ -1,15 +1,17 @@
 package org.example.expensetracker.controller;
 
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.example.expensetracker.entity.Role;
 import org.example.expensetracker.entity.User;
+import org.example.expensetracker.repository.UserRepository;
 import org.example.expensetracker.service.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -17,19 +19,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AdminProfileController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public AdminProfileController(UserService userService) {
+    public AdminProfileController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     // ===============================
     // ADMIN PROFILE PAGE
     // ===============================
     @GetMapping
-    public String adminProfile(HttpSession session, Model model) {
+    public String adminProfile(Authentication authentication, Model model) {
 
-        User admin = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
 
+        User admin = userRepository.findByEmail(email).orElse(null);
         if (admin == null) {
             return "redirect:/users/login";
         }
@@ -47,17 +52,24 @@ public class AdminProfileController {
     // ===============================
     @PostMapping("/password")
     public String changePassword(
-            HttpSession session,
+            Authentication authentication,
+            HttpServletRequest request,
+            HttpServletResponse response,
             @RequestParam String currentPassword,
             @RequestParam String newPassword,
             @RequestParam String confirmPassword,
             RedirectAttributes redirectAttributes
     ) {
 
-        User admin = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
 
+        User admin = userRepository.findByEmail(email).orElse(null);
         if (admin == null) {
             return "redirect:/users/login";
+        }
+
+        if (admin.getRole() != Role.ADMIN) {
+            return "redirect:/dashboard";
         }
 
         String result = userService.changePassword(
@@ -74,9 +86,12 @@ public class AdminProfileController {
 
         redirectAttributes.addFlashAttribute(
                 "successMessage",
-                "Password updated successfully"
+                "Password updated successfully. Please login again."
         );
 
-        return "redirect:/admin/profile";
+        // ✅ Logout after password change (security)
+        new SecurityContextLogoutHandler().logout(request, response, authentication);
+
+        return "redirect:/users/login";
     }
 }

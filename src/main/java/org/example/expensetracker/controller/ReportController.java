@@ -1,11 +1,15 @@
 package org.example.expensetracker.controller;
 
+import com.lowagie.text.*;
 import com.lowagie.text.Font;
-import jakarta.servlet.http.HttpSession;
+import com.lowagie.text.pdf.*;
+import jakarta.servlet.http.HttpServletResponse;
 import org.example.expensetracker.entity.Expense;
 import org.example.expensetracker.entity.User;
+import org.example.expensetracker.repository.UserRepository;
 import org.example.expensetracker.service.ReportService;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,22 +23,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import com.lowagie.text.*;
-import com.lowagie.text.pdf.*;
-import jakarta.servlet.http.HttpServletResponse;
-
 @Controller
 @RequestMapping("/report")
 public class ReportController {
 
     private final ReportService reportService;
+    private final UserRepository userRepository;
 
-    public ReportController(ReportService reportService) {
+    public ReportController(ReportService reportService, UserRepository userRepository) {
         this.reportService = reportService;
+        this.userRepository = userRepository;
     }
+
     @GetMapping
     public String showReport(
-            HttpSession session,
+            Authentication authentication,
             Model model,
             @RequestParam(required = false)
             @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -44,7 +47,9 @@ public class ReportController {
             LocalDate toDate
     ) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return "redirect:/users/login";
         }
@@ -63,11 +68,15 @@ public class ReportController {
         model.addAttribute("fromDate", fromDate);
         model.addAttribute("toDate", toDate);
 
+        // ✅ REQUIRED for topbar templates (${user.name})
+        model.addAttribute("user", user);
+
         return "report";
     }
+
     @GetMapping("/pdf")
     public void exportReportPdf(
-            HttpSession session,
+            Authentication authentication,
             HttpServletResponse response,
             @RequestParam
             @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -77,7 +86,9 @@ public class ReportController {
             LocalDate toDate
     ) throws Exception {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElse(null);
         if (user == null) {
             return;
         }
@@ -124,6 +135,7 @@ public class ReportController {
 
         document.close();
     }
+
     private void addTableHeader(PdfPTable table) {
         Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 
@@ -146,6 +158,4 @@ public class ReportController {
             table.addCell("₹ " + exp.getAmount());
         }
     }
-
-
 }

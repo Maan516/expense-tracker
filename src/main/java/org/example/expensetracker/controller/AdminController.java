@@ -1,9 +1,10 @@
 package org.example.expensetracker.controller;
 
-import jakarta.servlet.http.HttpSession;
 import org.example.expensetracker.entity.Role;
 import org.example.expensetracker.entity.User;
+import org.example.expensetracker.repository.UserRepository;
 import org.example.expensetracker.service.AdminService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,21 +15,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminController {
 
     private final AdminService adminService;
+    private final UserRepository userRepository;
 
-    public AdminController(AdminService adminService) {
+    public AdminController(AdminService adminService, UserRepository userRepository) {
         this.adminService = adminService;
+        this.userRepository = userRepository;
     }
 
     // ===============================
     // ADMIN DASHBOARD
     // ===============================
     @GetMapping("/dashboard")
-    public String adminDashboard(
-            HttpSession session,
-            Model model
-    ) {
+    public String adminDashboard(Authentication authentication, Model model) {
 
-        User admin = (User) session.getAttribute("loggedInUser");
+        // ✅ logged in email
+        String email = authentication.getName();
+
+        // ✅ fetch admin from DB
+        User admin = userRepository.findByEmail(email).orElse(null);
 
         if (admin == null) {
             return "redirect:/users/login";
@@ -39,10 +43,7 @@ public class AdminController {
         }
 
         model.addAttribute("admin", admin);
-        model.addAttribute(
-                "totalUsers",
-                adminService.getTotalUsers()
-        );
+        model.addAttribute("totalUsers", adminService.getTotalUsers());
 
         return "admin/dashboard";
     }
@@ -51,12 +52,11 @@ public class AdminController {
     // ADMIN → USERS LIST
     // ===============================
     @GetMapping("/users")
-    public String adminUsers(
-            HttpSession session,
-            Model model
-    ) {
+    public String adminUsers(Authentication authentication, Model model) {
 
-        User admin = (User) session.getAttribute("loggedInUser");
+        String email = authentication.getName();
+
+        User admin = userRepository.findByEmail(email).orElse(null);
 
         if (admin == null) {
             return "redirect:/users/login";
@@ -66,10 +66,7 @@ public class AdminController {
             return "redirect:/dashboard";
         }
 
-        model.addAttribute(
-                "users",
-                adminService.getAllNormalUsers()
-        );
+        model.addAttribute("users", adminService.getAllNormalUsers());
 
         return "admin/users";
     }
