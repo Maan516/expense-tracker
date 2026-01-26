@@ -173,6 +173,10 @@ public class UserServiceImp implements UserService {
         int otp = 100000 + random.nextInt(900000);
         return String.valueOf(otp);
     }
+    @Override
+    public boolean emailExists(String email) {
+        return userRepository.findByEmail(email).isPresent();
+    }
 
 
 }

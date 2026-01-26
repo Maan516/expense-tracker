@@ -26,6 +26,7 @@ public interface UserService {
             String newPassword,
             String confirmPassword
     );
+    boolean emailExists(String email);
 
 
 

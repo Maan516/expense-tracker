@@ -31,6 +31,11 @@
                          class="alert alert-success text-center mb-4"
                          th:text="${successMessage}">
                     </div>
+                    <!-- ✅ ERROR MESSAGE -->
+                    <div th:if="${errorMessage}"
+                         class="alert alert-danger text-center mb-4"
+                         th:text="${errorMessage}">
+                    </div>
 
                     <div class="login-header text-center mb-4">
                         <i class="bi bi-wallet2 login-icon"></i>

@@ -31,28 +31,35 @@ public class UserController {
     public String registerUser(
             @Valid @ModelAttribute("user") User user,
             BindingResult result,
-            Model model) {
+            Model model
+    ) {
 
         // If validation fails → stay on register page
         if (result.hasErrors()) {
             return "register";
         }
 
+        // ✅ DUPLICATE EMAIL CHECK
+        if (userService.emailExists(user.getEmail())) {
+            model.addAttribute("errorMessage", "Email already exists. Please login.");
+            return "register";
+        }
+
         // Save user to database
         userService.registerUser(user);
 
-        // Success message for same page
+        // Success message
         model.addAttribute(
                 "successMessage",
                 "Registration successful! You can now login."
         );
 
-        // Clear form (new empty object)
+        // Clear form
         model.addAttribute("user", new User());
 
-        //  Stay on register page
         return "register";
     }
+
 
     @GetMapping("/login")
     public String showLoginPage(
